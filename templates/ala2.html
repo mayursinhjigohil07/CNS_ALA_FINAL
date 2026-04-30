@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <title>Cryptographic Hash Lab - ALA 2</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body class="ala-page alt-ala2">
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="top-card">
+    <h2>Cryptographic Hash Analysis</h2>
+    <p class="mini-tag">CNS Practical - ALA 2</p>
+    <p class="desc">
+      This experiment demonstrates how secure hash algorithms react to even minimal changes in input data.
+    </p>
+  </div>
+
+  <!-- INPUT SECTION -->
+  <div class="panel single-panel">
+    <form method="POST">
+
+      <label>Base Input</label>
+      <textarea name="text" required placeholder="Enter original input...">{{ original_text }}</textarea>
+
+      <label>Altered Input</label>
+      <textarea name="changed_text" placeholder="Slightly modify the input...">{{ changed_text }}</textarea>
+
+      <button type="submit">Execute Hash Comparison</button>
+
+    </form>
+  </div>
+
+  {% if result %}
+
+  <!-- INPUT COMPARISON -->
+  <div class="output info">
+    <h3>Input Comparison</h3>
+
+    <p><b>Original:</b></p>
+    <pre>{{ result.original_text }}</pre>
+
+    <p><b>Modified:</b></p>
+    <pre>{{ result.changed_text }}</pre>
+  </div>
+
+  <!-- HASH RESULTS BLOCK STYLE -->
+  <div class="output success">
+    <h3>Hash Outputs</h3>
+
+    <h4>SHA-1</h4>
+    <p><b>Original:</b></p>
+    <pre>{{ result.original_hashes.SHA1 }}</pre>
+    <p><b>Modified:</b></p>
+    <pre>{{ result.changed_hashes.SHA1 }}</pre>
+
+    <h4>SHA-256</h4>
+    <p><b>Original:</b></p>
+    <pre>{{ result.original_hashes.SHA256 }}</pre>
+    <p><b>Modified:</b></p>
+    <pre>{{ result.changed_hashes.SHA256 }}</pre>
+
+    <h4>SHA-512</h4>
+    <p><b>Original:</b></p>
+    <pre>{{ result.original_hashes.SHA512 }}</pre>
+    <p><b>Modified:</b></p>
+    <pre>{{ result.changed_hashes.SHA512 }}</pre>
+  </div>
+
+  <!-- AVALANCHE ANALYSIS -->
+  <div class="output info">
+    <h3>Avalanche Effect Evaluation</h3>
+
+    <p><b>SHA-1:</b></p>
+    <p>Bit Difference: {{ result.avalanche.SHA1.bit_changed }} / {{ result.avalanche.SHA1.bit_total }}</p>
+    <p>Hex Difference: {{ result.avalanche.SHA1.hex_changed }} / {{ result.avalanche.SHA1.hex_total }}</p>
+
+    <hr>
+
+    <p><b>SHA-256:</b></p>
+    <p>Bit Difference: {{ result.avalanche.SHA256.bit_changed }} / {{ result.avalanche.SHA256.bit_total }}</p>
+    <p>Hex Difference: {{ result.avalanche.SHA256.hex_changed }} / {{ result.avalanche.SHA256.hex_total }}</p>
+
+    <hr>
+
+    <p><b>SHA-512:</b></p>
+    <p>Bit Difference: {{ result.avalanche.SHA512.bit_changed }} / {{ result.avalanche.SHA512.bit_total }}</p>
+    <p>Hex Difference: {{ result.avalanche.SHA512.hex_changed }} / {{ result.avalanche.SHA512.hex_total }}</p>
+  </div>
+
+  <!-- FINAL OBSERVATION -->
+  <div class="output">
+    <h3>Observation</h3>
+    <p>
+      Even a negligible modification in the input produces a significantly different hash output.
+      This confirms the strong avalanche property of cryptographic hash functions.
+    </p>
+  </div>
+
+  {% endif %}
+
+  <!-- NAV -->
+  <div class="nav">
+    <a href="/">← Back to Home</a>
+  </div>
+
+</div>
+
+</body>
+</html>

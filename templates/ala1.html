@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <title>ALA 1 - Digital Signature Workflow</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body class="ala-page unique-ala1">
+
+<div class="flow-container">
+
+  <!-- HEADER -->
+  <div class="flow-header">
+    <h1>Digital Signature Workflow</h1>
+    <p class="subtitle">CNS Experiment - ALA 1</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="flow-step">
+    <div class="step-label">STEP 1</div>
+
+    <form method="POST" class="flow-card">
+      <input type="hidden" name="action" value="sign" />
+
+      <h3>Signing Engine</h3>
+
+      <label>Input Message</label>
+      <textarea name="message" required placeholder="Enter message to sign...">
+{{ request.form.get('message','') }}</textarea>
+
+      <button type="submit">Generate Digital Signature</button>
+    </form>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="flow-step">
+    <div class="step-label">STEP 2</div>
+
+    <form method="POST" class="flow-card">
+      <input type="hidden" name="action" value="verify" />
+
+      <h3>Verification Engine</h3>
+
+      <label>Received Message</label>
+      <textarea name="verify_message" required>
+{{ request.form.get('verify_message','') }}</textarea>
+
+      <label>Signature</label>
+      <input type="text" name="verify_signature"
+      value="{{ request.form.get('verify_signature','') }}" />
+
+      <label>Public Key (e)</label>
+      <input type="text" name="verify_public_e"
+      value="{{ request.form.get('verify_public_e','') }}" />
+
+      <label>Public Key (n)</label>
+      <input type="text" name="verify_public_n"
+      value="{{ request.form.get('verify_public_n','') }}" />
+
+      <button type="submit">Validate Signature</button>
+    </form>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="flow-results">
+
+    {% if sign_result %}
+    <div class="result-block success">
+      <h4>Generated Signature</h4>
+
+      <p><b>Message</b></p>
+      <pre>{{ sign_result.message }}</pre>
+
+      <p><b>Signature</b></p>
+      <pre>{{ sign_result.signature }}</pre>
+
+      <p><b>Public Key</b></p>
+      <pre>{{ sign_result.public_key }}</pre>
+    </div>
+    {% endif %}
+
+    {% if verify_error %}
+    <div class="result-block error">
+      <h4>Error</h4>
+      <p>{{ verify_error }}</p>
+    </div>
+    {% endif %}
+
+    {% if verify_result %}
+    <div class="result-block {{ 'success' if verify_result.verified else 'error' }}">
+      <h4>Verification Output</h4>
+
+      <p>
+        Status:
+        <b>
+          {{ 'VALID SIGNATURE ✔' if verify_result.verified else 'INVALID SIGNATURE ✖' }}
+        </b>
+      </p>
+
+      <p><b>Expected Hash</b></p>
+      <pre>{{ verify_result.expected_hash }}</pre>
+
+      <p><b>Recovered Hash</b></p>
+      <pre>{{ verify_result.recovered_hash }}</pre>
+    </div>
+    {% endif %}
+
+  </div>
+
+  <!-- NAV -->
+  <div class="flow-nav">
+    <a href="/">← Return to Home</a>
+  </div>
+
+</div>
+
+</body>
+</html>

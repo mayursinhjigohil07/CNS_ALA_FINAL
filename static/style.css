@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* ===== GLOBAL ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f4f7fb;
+  color: #2d3436;
+  text-align: center;
+}
+
+/* ===== COMMON ===== */
+.wrapper {
+  width: 85%;
+  margin: auto;
+}
+
+/* ===== HOME ===== */
+.home-page {
+  background: linear-gradient(135deg, #fdfefe, #eef2f7);
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.home-container {
+  width: 70%;
+  margin: 40px auto;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.logo-image {
+  width: 110px;
+  margin-top: 20px;
+}
+
+.university {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* BUTTONS (HOME) */
+.buttons {
+  display: flex;
+}
+
+.buttons a {
+  flex: 1;
+  padding: 14px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  background: linear-gradient(135deg, #d12b20, #e3806a6c);
+  transition: 0.3s;
+}
+
+.buttons a:hover {
+  background: linear-gradient(135deg, #e2b7a2, #eb4e2f);
+}
+
+/* ===== ALA PAGES ===== */
+.ala-page {
+  min-height: 100vh;
+  padding: 30px;
+}
+
+/* HEADER */
+.top-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.mini-tag {
+  font-size: 12px;
+  color: #888;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+}
+
+/* LAYOUT */
+.dual-box {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.panel {
+  flex: 1;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* INPUTS */
+textarea, input {
+  width: 100%;
+  padding: 11px;
+  border-radius: 8px;
+  border: 1px solid #dfe6e9;
+  background: #f9fbfd;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border: 1px solid #7285c7;
+  box-shadow: 0 0 0 2px rgba(108,140,255,0.15);
+}
+
+/* ===== BUTTON DESIGN (UPDATED 🔥) ===== */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff;
+
+  /* gradient */
+  background: linear-gradient(135deg, #6c8cff, #c9cee6);
+
+  /* effects */
+  box-shadow: 0 6px 14px rgba(76, 105, 255, 0.25);
+  transition: all 0.25s ease;
+}
+
+/* HOVER */
+button:hover {
+  background: linear-gradient(135deg, #d6dcf6, #effcad);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(76, 105, 255, 0.35);
+}
+
+/* CLICK */
+button:active {
+  transform: scale(0.96);
+  box-shadow: 0 4px 10px rgba(76, 105, 255, 0.2);
+}
+
+/* OPTIONAL SECONDARY BUTTON (if needed later) */
+button.secondary {
+  background: linear-gradient(135deg, #39cbb6, #00cec9);
+}
+
+button.secondary:hover {
+  background: linear-gradient(135deg, #21b89c, #82e6e6);
+}
+
+/* ===== OUTPUT ===== */
+.output {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.success {
+  background: #eafaf1;
+  border-left: 5px solid #c6dfd1;
+}
+
+.error {
+  background: #fdecea;
+  border-left: 5px solid #ebb7b1;
+}
+
+.info {
+  background: #eef5ff;
+  border-left: 5px solid #c7e4f8;
+}
+
+/* CODE BLOCK */
+pre {
+  background: #eef3f9;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* NAV */
+.nav {
+  margin-top: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #97b5f1;
+  font-weight: 500;
+}
+
+/* ===== ALA SPECIFIC BACKGROUNDS ===== */
+.alt-ala1 {
+  background: #f7f9fc;
+}
+
+.alt-ala2 {
+  background: #f5f8ff;
+}
+
+.alt-ala3 {
+  background: #f4f9ff;
+}
+
+/* ===== GRID (ALA-2) ===== */
+.metric-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.metric-card {
+  flex: 1;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
